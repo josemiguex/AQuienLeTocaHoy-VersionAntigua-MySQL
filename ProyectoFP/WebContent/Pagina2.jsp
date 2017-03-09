@@ -10,26 +10,30 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Página 2</title>
+<link rel="stylesheet" type="text/css" href="CSS/Pagina2.css">
+
 </head>
-<body>
+<body background="http://www.wallpapersxl.com/wallpapers/2560x1440/autos-antiguos/1032436/autos-antiguos-hq-bmw-tuning-coches-autom-viles-imagen-1032436.jpg">
 
 <h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 
 <div class="container">
 <div class="row">
 <div class="col l12 m12 s12">
-<table style="margin: 0 auto;" class="striped">
+<table style="margin: 0 auto;" class="highlight" bgcolor="#dbdbdb">
 <jsp:include page="MainServlet" flush="true"/>
 </table>
 </div>
 </div>
 </div>
-<form class="col s12" action="">
+
+<div class="contenedor">
+<form class="col s12" action="LogInServlet">
 <div class="row">
 <legend><h5>Iniciar sesión</h5></legend>
 <div class="input-field col l3 m6 s12">
-<input type="text" name="nombre" placeholder="Introduce el nombre de usuario" required>
-<label for="nombre"> Usuario del administrador</label>
+<input type="text" name="Identificador" placeholder="Introduce el nombre de usuario" required>
+<label for="Identificador"> Usuario del administrador</label>
 </div>
 <div class="input-field col l3 m6 s12">
 <input type="password" name="clave" placeholder="Inreuduce su contraseña" required>
@@ -43,12 +47,12 @@
 <div class="row">
 <legend><h5>¿Quieres ver otra tabla?</h5></legend>
 <div class="input-field col l3 m6 s12">
-<input type="text" name="IdAdmin" placeholder="Introduce el usuario del administrador" required>
-<label for="IdAdmin"> Usuario del administrador</label>
+<input type="text" name="Identificador" placeholder="Introduce el usuario del administrador" required>
+<label for="Identificador"> Usuario del administrador</label>
 </div>
 <input class="button" type="submit" value="Buscar tabla">
 </div>
 </form>
-
+</div>
 </body>
 </html>

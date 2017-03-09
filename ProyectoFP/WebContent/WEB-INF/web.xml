@@ -21,6 +21,15 @@
   <url-pattern>/MainServlet</url-pattern>
 </servlet-mapping>  
 
+<servlet>
+  <servlet-name>LogInServlet</servlet-name>
+  <servlet-class>es.ingenia.proyectofp.LogInServlet</servlet-class>
+</servlet>
+ <servlet-mapping>
+  <servlet-name>LogInServlet</servlet-name>
+  <url-pattern>/LogInServlet</url-pattern>
+</servlet-mapping>  
+
   <servlet>
   <servlet-name>AñadirUsuario</servlet-name>
   <servlet-class>es.ingenia.proyectofp.AñadirUsuario</servlet-class>

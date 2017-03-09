@@ -40,6 +40,7 @@ public class LogInServlet extends HttpServlet {
         Connection connection = null;
         Statement stmt = null;
         boolean existe = false;
+       
 		try {
 			ctx = new InitialContext();
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
@@ -71,11 +72,16 @@ public class LogInServlet extends HttpServlet {
 	        if (stmt != null) {	        	
 	        	try {
 	        		if (existe) {
-	        			String nextJSP = "/Pagina0.jsp";
+	        			String nextJSP = "/Página3.jsp";
 	        			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 	        			dispatcher.forward(request,response);
 	        		} else {
-	        			response.getWriter().append("Error");
+	        			
+	        			String nextJSP = "/Página0.jsp?error=true";
+	        			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+	        			dispatcher.forward(request,response);
+	        				        			
+	        			
 	        		}
 					stmt.close();
 				} catch (SQLException e) {

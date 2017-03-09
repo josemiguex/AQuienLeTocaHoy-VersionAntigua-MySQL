@@ -10,81 +10,29 @@
 	  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
 <title>¿A quién le toca hoy?</title>
-<style>
-h1,h2,h3,h4,h5,h6 {
-color: #FFFFFF;
-text-align: center;
-}
-p,b {
-color: white;
-}
+<link rel="stylesheet" type="text/css" href="CSS/Pagina0.css">
 
-.button {
-    background-color: #42a4f4; 
-    border: 2px solid #63b9ff;
-    color: white;
-    padding: 15px 20px;
-    width: 250px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.1s;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
-    
-}
-
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.2s;
-}
-
-.button:hover {
-    background-color: #63b9ff; 
-    color: black;
-    
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-
-input {
-color: white;
-}
-
-div.uno {
-border-top: 500px;
-}
-</style>
 </head>
-<body background="http://www.fondos7.net/wallpaper-original/wallpapers/fotos-de-autos-7395.jpg">
+<body bgcolor="#000000" background="http://www.fondos7.net/wallpaper-original/wallpapers/fotos-de-autos-7395.jpg">
 	
+	<%
+	if (Boolean.parseBoolean(request.getParameter("true"))) {
+		out.println("<script> alert(\"Usuario o contraseña incorrectos\"); </script>"); 
+
+
+	}
+	
+	%>
 	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 	<p align=center><b >Información de la página</b></p> <br/>
 	
-	<div class="uno">
-	<a href="Página1.jsp"><button class="button"><span>Registrarse</span></button></a>
+	<div class="contenedor">
+	
+	<legend><h5>Registrarse</h5></legend>
+	<a href="Página1.jsp"><button class="button"><span>Pulse aquí para registrarse</span></button></a>
 	<br/>
-		<form class="col s12" action="Pagina2.jsp">
+	<br/>
+		<form class="col s12" action="LogInServlet" method="post">
 		<div class="row">
 		<legend><h5>Iniciar sesión</h5></legend>
 	       <div class="input-field col l3 m6 s12">
@@ -103,16 +51,16 @@ border-top: 500px;
 	
 	<br>
 	
-	<form class="col s12" action="Pagina2.jsp">
+	<form class="col s12" action="Pagina2.jsp" method="post">
 		<div class="row">
 		<legend><h5>Mostrar usuarios de un determinado administrador</h5></legend>
 	       <div class="input-field col l3 m6 s12">
-			<input type="text" name="IdAdmin" placeholder="Pon aquí el identificador del administrador">
-			<label for="IdAdmin">Id del administrador</label>
+			<input type="text" name="Identificador" placeholder="Pon aquí el identificador del administrador" required>
+			<label for="Identificador">Id del administrador</label>
 			</div>
 			
 			</div>
-		</div>
+		
 		<input class="button" type="submit" value="Mostrar usuarios"><br/>
 		
 	</form>
