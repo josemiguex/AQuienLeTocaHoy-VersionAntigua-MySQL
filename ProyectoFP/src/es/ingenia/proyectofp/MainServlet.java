@@ -47,13 +47,13 @@ public class MainServlet extends HttpServlet {
 	        stmt = connection.createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
 	        //response.getWriter().append("<table style=\"margin: 0 auto;\">");
-	        response.getWriter().append("<thead><tr><th>DNI</th><th>Nombre y Apellidos</th></tr></thead>");
+	        response.getWriter().append("<thead><tr><th></th><th>DNI</th><th cosplan=\"3\">Nombre y Apellidos</th></thead>");
 	        while (rs.next()) {
 	        	String dni = rs.getString("DNI");
 	            String nombre = rs.getString("NOMBRE");
 	            String apellido1 = rs.getString("APELLIDO1");
 	            String apellido2 = rs.getString("APELLIDO2");
-	            response.getWriter().append("<tr><td>" + dni + "</td><td>" + nombre + " " + apellido1 + " " + apellido2 + "</td></tr>");
+	            response.getWriter().append("<tr><td><input type=\"checkbox\" id="+ID+"/><label for="+ID+"></td><td>"+DNI+"</td><td cosplan=\"3\">"+nombre+" "+apellido1+" "+apellido2+"</label></td></tr>");
 	        }	
 	        //response.getWriter().append("</table>");
 		} catch (NamingException e) {
