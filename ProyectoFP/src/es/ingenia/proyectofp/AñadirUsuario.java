@@ -9,6 +9,7 @@ import java.sql.Statement;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +34,8 @@ public class AñadirUsuario extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
+		
+		
         Context ctx;
         Connection connection = null;
         Statement stmt = null;
@@ -41,12 +43,13 @@ public class AñadirUsuario extends HttpServlet {
 			ctx = new InitialContext();
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
-	        		    
-		    String query = "insert into USUARIO (NOMBRE, APELLIDO1, APELLIDO2, DNI, IdAdmistrador) values ('" + request.getParameter("nombre") + "','" + request.getParameter("apellido1") + "','" + request.getParameter("apellido2") + "','" + request.getParameter("dni") + "','" + request.getParameter("idadministrador")"')" ;	        
+		    String query = "INSERT INTO USUARIO (DNI, NOMBRE, APELLIDO1, APELLIDO2, EMAIL) VALUES ('" + request.getParameter("DNI") + "','" + request.getParameter("Nombre") + "','" + request.getParameter("Apellido1") + "','" + request.getParameter("Apellido2") + "','" + request.getParameter("email") + "')"; 
 	        stmt = connection.createStatement();
 	        int insert = stmt.executeUpdate(query);
 	        
-	 
+	        
+	        	
+	        //response.getWriter().append("</table>");
 		} catch (NamingException e) {
 			response.getWriter().append(e.getMessage());
 			e.printStackTrace();
@@ -56,11 +59,14 @@ public class AñadirUsuario extends HttpServlet {
 	    } finally {
 	        if (stmt != null) {	        	
 	        	try {
+	        		String nextJSP = "/Pagina2.jsp";
+        			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+        			dispatcher.forward(request,response);
 					stmt.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} 
-	        }
+	        } 
 	    }		
 	}
 
