@@ -13,16 +13,9 @@
 <link rel="stylesheet" type="text/css" href="CSS/Pagina0.css">
 
 </head>
-<body bgcolor="#000000" background="http://www.fondos7.net/wallpaper-original/wallpapers/fotos-de-autos-7395.jpg">
-	
-	<%
-	if (Boolean.parseBoolean(request.getParameter("true"))) {
-		out.println("<script> alert(\"Usuario o contraseña incorrectos\"); </script>"); 
+<body bgcolor="#FFFFFF" background="http://www.fondos7.net/wallpaper-original/wallpapers/fotos-de-autos-7395.jpg">
 
 
-	}
-	
-	%>
 	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 	<p align=center><b >Información de la página</b></p> <br/>
 	
@@ -45,8 +38,8 @@
 			<label for="clave">Clave del administrador</label>
 			</div>
 		</div>
-		<input class="button" type="submit" value="Iniciar sesión"><br/>
-		
+		<b>${msg}</b><br/>
+		<input class="button" type="submit" value="Iniciar sesión">
 	</form>
 	
 	<br>
@@ -60,7 +53,7 @@
 			</div>
 			
 			</div>
-		
+			<b>${msg2}</b><br/>
 		<input class="button" type="submit" value="Mostrar usuarios"><br/>
 		
 	</form>

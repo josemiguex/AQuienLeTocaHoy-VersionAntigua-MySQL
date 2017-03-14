@@ -22,6 +22,24 @@
 </servlet-mapping>  
 
 <servlet>
+  <servlet-name>BorrarUsuario</servlet-name>
+  <servlet-class>es.ingenia.proyectofp.BorrarUsuario</servlet-class>
+</servlet>
+ <servlet-mapping>
+  <servlet-name>BorrarUsuario</servlet-name>
+  <url-pattern>/BorrarUsuario</url-pattern>
+</servlet-mapping>  
+
+<servlet>
+  <servlet-name>MostrarTabla</servlet-name>
+  <servlet-class>es.ingenia.proyectofp.MostrarTabla</servlet-class>
+</servlet>
+ <servlet-mapping>
+  <servlet-name>MostrarTabla</servlet-name>
+  <url-pattern>/MostrarTabla</url-pattern>
+</servlet-mapping>  
+
+<servlet>
   <servlet-name>LogInServlet</servlet-name>
   <servlet-class>es.ingenia.proyectofp.LogInServlet</servlet-class>
 </servlet>
@@ -48,14 +66,7 @@
   <url-pattern>/AñadirAdmin</url-pattern>
 </servlet-mapping>  
 
-    <servlet>
-  <servlet-name>BorrarUsuario</servlet-name>
-  <servlet-class>es.ingenia.proyectofp.BorrarUsuario</servlet-class>
-</servlet>
- <servlet-mapping>
-  <servlet-name>BorrarUsuario</servlet-name>
-  <url-pattern>/BorrarUsuario</url-pattern>
-</servlet-mapping>  
+
 
  <resource-ref>
       <description>ProyectoFP Connection</description>

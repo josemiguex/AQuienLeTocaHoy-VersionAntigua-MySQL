@@ -1,4 +1,4 @@
-package es.ingenia.proyectofp;
+ package es.ingenia.proyectofp;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -17,15 +17,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 /**
- * Servlet implementation class MainServlet
+ * Servlet implementation class MainServlet2
  */
-public class AñadirUsuario extends HttpServlet {
+public class MostrarTabla extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AñadirUsuario() {
+    public MostrarTabla() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,17 +39,30 @@ public class AñadirUsuario extends HttpServlet {
         Context ctx;
         Connection connection = null;
         Statement stmt = null;
+        boolean existe = false;
+        
 		try {
 			ctx = new InitialContext();
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
-		    String query = "INSERT INTO USUARIO (DNI, NOMBRE, APELLIDO1, APELLIDO2, EMAIL, IdAdministrador) VALUES ('" + request.getParameter("DNI") + "','" + request.getParameter("Nombre") + "','" + request.getParameter("Apellido1") + "','" + request.getParameter("Apellido2") + "','" + request.getParameter("email") + "','" + request.getParameter("Identificador") + "')"; 
+	        //response.getWriter().append("<h1 style=\"text-align: center;\">�A QUI�N LE TOCA HOY?</h1>");
+		    String query = "SELECT DNI, NOMBRE, APELLIDO1, APELLIDO2, ID FROM USUARIO WHERE IdAdministrador LIKE '" + request.getParameter("Identificador") + "'";     
 	        stmt = connection.createStatement();
-	        int insert = stmt.executeUpdate(query);
-	        
-	        
-	        	
-	        //response.getWriter().append("</table>");
+	        ResultSet rs = stmt.executeQuery(query);
+	        //response.getWriter().append("<table style=\"margin: 0 auto;\">");
+	        response.getWriter().append("<thead><tr><th></th><th>DNI</th><th cosplan=\"3\">Nombre y Apellidos</th></thead>");
+	        while (rs.next()) {
+	        	String dni = rs.getString("DNI");
+	            String nombre = rs.getString("NOMBRE");
+	            String apellido1 = rs.getString("APELLIDO1");
+	            String apellido2 = rs.getString("APELLIDO2");
+	            String ID = rs.getString("ID");
+	            response.getWriter().append("<tr><td></td><td>"+dni+"</td><td cosplan=\"3\">"+nombre+" "+apellido1+" "+apellido2+"</label></td></tr>");
+	            if (rs.getString("ID").equals(request.getParameter("Identificador"))) {
+	                existe = true;
+	            }
+	        }
+	       
 		} catch (NamingException e) {
 			response.getWriter().append(e.getMessage());
 			e.printStackTrace();
@@ -59,10 +72,8 @@ public class AñadirUsuario extends HttpServlet {
 	    } finally {
 	        if (stmt != null) {	        	
 	        	try {
-	        		String nextJSP = "/Pagina3.jsp";
-        			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-        			dispatcher.forward(request,response);
-					stmt.close();
+	        	stmt.close();
+					
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} 
@@ -79,3 +90,4 @@ public class AñadirUsuario extends HttpServlet {
 	}
 
 }
+

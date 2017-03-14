@@ -21,7 +21,7 @@
 <div class="row">
 <div class="col l12 m12 s12">
 <table style="margin: 0 auto;" class="highlight" bgcolor="#dbdbdb">
-<jsp:include page="MainServlet" flush="true"/>
+<jsp:include page="MostrarTabla" flush="true"/>
 </table>
 </div>
 </div>

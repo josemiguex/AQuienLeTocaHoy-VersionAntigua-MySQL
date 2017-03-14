@@ -18,7 +18,7 @@
 	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 	<p></p>
 		<div class="row">
-		<form class="col s12" action="AñadirAdmin">
+		<form class="col s12" action="AñadirAdmin" method="post">
 		<div class="row">
 		<legend><h5 text-color="blue">Registrarse</h5></legend>
 	   

@@ -65,7 +65,7 @@ public class AñadirAdmin extends HttpServlet {
 	        if (stmt != null) {	        	
 	        	try {
 	        		if (!error) {
-	        		String nextJSP = "/Pagina2.jsp";
+	        		String nextJSP = "/Pagina3.jsp";
 	    			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 	    			dispatcher.forward(request,response);
 					stmt.close();

@@ -13,25 +13,48 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	</head>
 	<body>
+	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
+	<% String admin = request.getParameter("Identificador"); 
+	%>
 	<div class="container">
 	<div class="row">
 	<div class="col l12 m12 s12">
 	
 		<table style="margin:0 auto;" class="striped">
-			<jsp:include page="MainServlet" flush="true"/>			
+		<form action="BorrarUsuario" method="get" name="form1">
+			<jsp:include page="MainServlet" flush="true"/>
+				<input type="hidden" name="Identificador" value="<%= admin %>">
+				
+			
+			</form>
 		</table>
 	</div>
 	</div>
 	</div>
+	
 
 	<nav>
+	
+	
     <div class="nav-wrapper green">
-      <a  href="añadir.jsp" class="btn-floating btn-large waves-effect waves-light green left"><i class="material-icons">add</i></a>
+    <form action="Página4.jsp" method="get" name="form2">
+    <input type="hidden" name="admin" value="<%= admin %>">
+      <a  onclick="document.forms['form2'].submit(); return false;" class="btn-floating btn-large waves-effect waves-light green left"><i class="material-icons">add</i></a>
+      
+      </form>
+      
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="EliminarUsuario">Eliminar</a></li>
+      
+      <form action="BorrarUsuario" method="get" name="form1">
+      <input type="hidden" name="Identificador" value="<%= admin %>">
+        <li><a onclick="document.forms['form1'].submit(); return false;">Eliminar</a></li>
         <li><a href="anotar.jsp">Anotar</a></li>
+        </form>
+        
+        
       </ul>
     </div>
   </nav>
+  </form>	
 	</body>
 </html>

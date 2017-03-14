@@ -72,15 +72,17 @@ public class LogInServlet extends HttpServlet {
 	        if (stmt != null) {	        	
 	        	try {
 	        		if (existe) {
-	        			String nextJSP = "/Página3.jsp";
+	        			String nextJSP = "/Pagina3.jsp";
 	        			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 	        			dispatcher.forward(request,response);
 	        		} else {
 	        			
-	        			String nextJSP = "/Página0.jsp?error=true";
-	        			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-	        			dispatcher.forward(request,response);
-	        				        			
+	        			
+	        			String msg = "Usuario o contraseña incorrectos";
+	        	        request.setAttribute("msg", msg); 
+	        	        RequestDispatcher rd = request.getRequestDispatcher("/Página0.jsp");
+	        	        rd.forward(request, response);
+
 	        			
 	        		}
 					stmt.close();
