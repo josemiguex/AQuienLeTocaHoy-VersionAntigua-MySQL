@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Página 3</title>
+		<title>PÃ¡gina 3</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">      
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
@@ -13,7 +13,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	</head>
 	<body>
-	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
+	<h4 style="text-align: center;">Â¿A quiÃ©n le toca hoy?</h4>
 	<% String admin = request.getParameter("Identificador"); 
 	%>
 	<div class="container">
@@ -37,7 +37,7 @@
 	
 	
     <div class="nav-wrapper green">
-    <form action="Página4.jsp" method="get" name="form2">
+    <form action="Pagina4.jsp" method="get" name="form2">
     <input type="hidden" name="admin" value="<%= admin %>">
       <a  onclick="document.forms['form2'].submit(); return false;" class="btn-floating btn-large waves-effect waves-light green left"><i class="material-icons">add</i></a>
       
@@ -51,7 +51,7 @@
         <li><a onclick="document.forms['form3'].submit(); return false;">Anotar</a></li>
         </form>
         
-        <form action="Página5.jsp" name="form3">
+        <form action="Pagina5.jsp" name="form3">
         <input type="hidden" name="Identificador" value="<%= admin %>">
         
         </form>
