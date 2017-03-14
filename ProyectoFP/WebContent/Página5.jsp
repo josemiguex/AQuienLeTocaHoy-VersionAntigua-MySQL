@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Página 3</title>
+		<title>Página 5</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">      
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
@@ -21,8 +21,8 @@
 	<div class="col l12 m12 s12">
 	
 		<table style="margin:0 auto;" class="striped">
-		<form action="BorrarUsuario" method="get" name="form1">
-			<jsp:include page="MainServlet" flush="true"/>
+		<form action="MainServlet2" method="get" name="form1">
+			<jsp:include page="AnotarServlet" flush="true"/>
 				<input type="hidden" name="Identificador" value="<%= admin %>">
 				
 			
@@ -36,29 +36,16 @@
 	<nav>
 	
 	
-    <div class="nav-wrapper green">
-    <form action="Página4.jsp" method="get" name="form2">
-    <input type="hidden" name="admin" value="<%= admin %>">
-      <a  onclick="document.forms['form2'].submit(); return false;" class="btn-floating btn-large waves-effect waves-light green left"><i class="material-icons">add</i></a>
-      
-      </form>
-      
+        
+        
       <ul id="nav-mobile" class="left hide-on-med-and-down">
       
-      
+      <form action="MainServlet2" method="get" name="form1">
       <input type="hidden" name="Identificador" value="<%= admin %>">
-        <li><a onclick="document.forms['form1'].submit(); return false;">Eliminar</a></li>
-        <li><a onclick="document.forms['form3'].submit(); return false;">Anotar</a></li>
-        </form>
-        
-        <form action="Página5.jsp" name="form3">
-        <input type="hidden" name="Identificador" value="<%= admin %>">
+        <li><a onclick="document.forms['form1'].submit(); return false;">Anotar</a></li>
         
         </form>
-        
-      </ul>
-    </div>
   </nav>
- 	
+  </form>	
 	</body>
 </html>
