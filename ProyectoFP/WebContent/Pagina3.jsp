@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Página 3</title>
+		<title>PÃ¡gina 3</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">      
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
@@ -13,7 +13,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	</head>
 	<body>
-	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
+	<h4 style="text-align: center;">Â¿A quiÃ©n le toca hoy?</h4>
 	<% String admin = request.getParameter("Identificador"); 
 	%>
 	<div class="container">
