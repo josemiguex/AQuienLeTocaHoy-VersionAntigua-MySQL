@@ -80,7 +80,7 @@ public class LogInServlet extends HttpServlet {
 	        			
 	        			String msg = "Usuario o contraseña incorrectos";
 	        	        request.setAttribute("msg", msg); 
-	        	        RequestDispatcher rd = request.getRequestDispatcher("/Página0.jsp");
+	        	        RequestDispatcher rd = request.getRequestDispatcher("/Pagina0.jsp");
 	        	        rd.forward(request, response);
 
 	        			

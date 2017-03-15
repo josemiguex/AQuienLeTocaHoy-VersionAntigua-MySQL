@@ -22,7 +22,7 @@
 	<div class="contenedor">
 	
 	<legend><h5>Registrarse</h5></legend>
-	<a href="Página1.jsp"><button class="button"><span>Pulse aquí para registrarse</span></button></a>
+	<a href="Pagina1.jsp"><button class="button"><span>Pulse aquí para registrarse</span></button></a>
 	<br/>
 	<br/>
 		<form class="col s12" action="LogInServlet" method="post">

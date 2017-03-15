@@ -37,7 +37,7 @@
 	
 	
     <div class="nav-wrapper green">
-    <form action="Página4.jsp" method="get" name="form2">
+    <form action="Pagina4.jsp" method="get" name="form2">
     <input type="hidden" name="admin" value="<%= admin %>">
       <a  onclick="document.forms['form2'].submit(); return false;" class="btn-floating btn-large waves-effect waves-light green left"><i class="material-icons">add</i></a>
       
@@ -51,7 +51,7 @@
         <li><a onclick="document.forms['form3'].submit(); return false;">Anotar</a></li>
         </form>
         
-        <form action="Página5.jsp" name="form3">
+        <form action="Pagina5.jsp" name="form3">
         <input type="hidden" name="Identificador" value="<%= admin %>">
         
         </form>
