@@ -9,13 +9,13 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>PÃ¡gina 4</title>
+		<title>Página 4</title>
 	</head>
 	<body>
-		<h4 style="text-align: center;">Â¿A quiÃ©n le toca hoy?</h4>
+		<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 		
 		
-		<form class="col s12" action="AÃ±adirUsuario" method="post">
+		<form class="col s12" action="AñadirUsuario" method="post">
 		<div class="row">
 		<div class="input-field col l4 m12 s12">
 		<input type="text" name="Nombre" placeholder="Nombre" required>
@@ -34,8 +34,8 @@
 		<label for="DNI">DNI</label>
 		</div>
 		<div class="input-field col l6 m6 s12">
-		<input type="email" name="email" placeholder="Correo electrÃ³nico" required>
-		<label for="email" data-error="wrong" data-success="right">Correo electrÃ³nico</label>
+		<input type="email" name="email" placeholder="Correo electrónico" required>
+		<label for="email" data-error="wrong" data-success="right">Correo electrónico</label>
 		<%String id = request.getParameter("admin");
 		%>
 				
@@ -44,7 +44,7 @@
 		<br><br><br><br>
 		<center>
 		
-		<input class="button" type="submit" value="AÃ±adir Usuario">
+		<input class="button" type="submit" value="Añadir Usuario">
 		
 		</center>
 		</div>

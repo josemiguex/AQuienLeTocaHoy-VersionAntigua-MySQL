@@ -1,10 +1,15 @@
- package es.ingenia.proyectofp;
+package es.ingenia.proyectofp;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -16,16 +21,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import com.mysql.jdbc.StringUtils;
+
 /**
- * Servlet implementation class MainServlet2
+ * Servlet implementation class MainServlet
  */
-public class MostrarTabla extends HttpServlet {
+public class AnotadorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MostrarTabla() {
+    public AnotadorServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,35 +41,48 @@ public class MostrarTabla extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+				
         Context ctx;
         Connection connection = null;
         Statement stmt = null;
-        boolean existe = false;
-        
+        Statement stmt2 = null;
+        String borrar;
 		try {
 			ctx = new InitialContext();
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
-	        //response.getWriter().append("<h1 style=\"text-align: center;\">�A QUI�N LE TOCA HOY?</h1>");
-		    String query = "SELECT DNI, NOMBRE, APELLIDO1, APELLIDO2, PASAJERO, CONDUCTOR ID FROM USUARIO WHERE IdAdministrador LIKE '" + request.getParameter("Identificador") + "' ORDER BY (VA/CONDUCTOR) desc";     
-	        stmt = connection.createStatement();
-	        ResultSet rs = stmt.executeQuery(query);
-	        //response.getWriter().append("<table style=\"margin: 0 auto;\">");
-	        response.getWriter().append("<thead><tr><th></th><th>DNI</th><th cosplan=\"3\">Nombre y Apellidos</th></thead>");
-	        while (rs.next()) {
-	        	String dni = rs.getString("DNI");
-	            String nombre = rs.getString("NOMBRE");
-	            String apellido1 = rs.getString("APELLIDO1");
-	            String apellido2 = rs.getString("APELLIDO2");
-	            String ID = rs.getString("ID");
-	            response.getWriter().append("<tr><td></td><td>"+dni+"</td><td cosplan=\"3\">"+nombre+" "+apellido1+" "+apellido2+"</label></td></tr>");
-	            if (rs.getString("ID").equals(request.getParameter("Identificador"))) {
-	                existe = true;
-	            }
-	        }
-	       
+	        PrintWriter pw = response.getWriter();
+			response.setContentType("text/html");
+
+			Map m= request.getParameterMap();
+			Set s = m.entrySet();
+			Iterator it = s.iterator();
+	        
+			while(it.hasNext()){
+
+				Map.Entry<String,String[]> entry = (Map.Entry<String,String[]>)it.next();
+
+				String key = entry.getKey();
+				String[] value = entry.getValue();
+
+				
+				
+				
+				
+				if(value.length>1){
+				for (int i = 0; i < value.length; i++) {
+					response.getWriter().append("<li>" + value[i].toString() + "</li><br>");
+				}
+				
+				} 
+
+				String query = "UPDATE USUARIO SET " + value[0].toString() + "=" + value[0].toString() + "+1,VA=VA + 1 WHERE ID=" + key;     
+		        stmt = connection.createStatement();
+		        int rs = stmt.executeUpdate(query);
+		        
+
+			}
+	        
 		} catch (NamingException e) {
 			response.getWriter().append(e.getMessage());
 			e.printStackTrace();
@@ -72,12 +92,14 @@ public class MostrarTabla extends HttpServlet {
 	    } finally {
 	        if (stmt != null) {	        	
 	        	try {
-	        	stmt.close();
-					
+	        		String nextJSP = "/Pagina3.jsp";
+        			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+        			dispatcher.forward(request,response);
+					stmt.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} 
-	        } 
+	        }
 	    }		
 	}
 
@@ -88,6 +110,9 @@ public class MostrarTabla extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	
+	public static boolean isEmpty(String variable) {
+	    return variable == null || variable.length() == 0;
+	}
 
 }
-

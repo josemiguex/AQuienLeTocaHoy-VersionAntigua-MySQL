@@ -42,7 +42,7 @@ public class MainServlet extends HttpServlet {
 			ctx = new InitialContext();
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
-		    String query = "SELECT DNI, NOMBRE, APELLIDO1, APELLIDO2, ID FROM USUARIO WHERE IdAdministrador LIKE '" + request.getParameter("Identificador") + "'";     
+		    String query = "SELECT DNI, NOMBRE, APELLIDO1, APELLIDO2, ID FROM USUARIO WHERE IdAdministrador LIKE '" + request.getParameter("Identificador") + "' ORDER BY (VA/CONDUCTOR) desc";     
 	        stmt = connection.createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
 

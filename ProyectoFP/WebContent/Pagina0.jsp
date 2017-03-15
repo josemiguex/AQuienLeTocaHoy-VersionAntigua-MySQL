@@ -17,7 +17,6 @@
 
 
 	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
-	<p align=center><b >Información de la página</b></p> <br/>
 	
 	<div class="contenedor">
 	

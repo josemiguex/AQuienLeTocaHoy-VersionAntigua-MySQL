@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>PÃ¡gina 3</title>
+		<title>Página 3</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">      
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
@@ -13,7 +13,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	</head>
 	<body>
-	<h4 style="text-align: center;">Â¿A quiÃ©n le toca hoy?</h4>
+	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 	<% String admin = request.getParameter("Identificador"); 
 	%>
 	<div class="container">
@@ -44,17 +44,17 @@
       </form>
       
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-      
+      <form action="Pagina5.jsp" name="form3">
+        <input type="hidden" name="Identificador" value="<%= admin %>">
+        
+        </form>
       
       <input type="hidden" name="Identificador" value="<%= admin %>">
         <li><a onclick="document.forms['form1'].submit(); return false;">Eliminar</a></li>
         <li><a onclick="document.forms['form3'].submit(); return false;">Anotar</a></li>
-        </form>
+       
         
-        <form action="Pagina5.jsp" name="form3">
-        <input type="hidden" name="Identificador" value="<%= admin %>">
         
-        </form>
         
       </ul>
     </div>

@@ -56,7 +56,7 @@ public class AnotarServlet extends HttpServlet {
 	            String apellido1 = rs.getString("APELLIDO1");
 	            String apellido2 = rs.getString("APELLIDO2");
 	            String ID = rs.getString("ID");
-	            response.getWriter().append("<tr><td><input type=\"radio\" name=\"" + ID + "\" id=\"chofer" + i + "\" value=\"chofer\" /><label for=\"chofer" + i + "\"> </td><td><input type=\"radio\" name=\"" + ID + "\" id=\"pasajero" + i +"\" value=\"pasajero\" /><label for=\"pasajero" + i + "\"></td><td>"+dni+"</td><td cosplan=\"3\">"+nombre+" "+apellido1+" "+apellido2+"</label></td></tr>");
+	            response.getWriter().append("<tr><td><input type=\"radio\" name=\"" + ID + "\" id=\"chofer" + i + "\" value=\"Conductor\" /><label for=\"chofer" + i + "\"> </td><td><input type=\"radio\" name=\"" + ID + "\" id=\"pasajero" + i +"\" value=\"Pasajero\" /><label for=\"pasajero" + i + "\"></td><td>"+dni+"</td><td cosplan=\"3\">"+nombre+" "+apellido1+" "+apellido2+"</label></td></tr>");
 	          i++;
 	        }	
 	        //response.getWriter().append("</form>");

@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>PÃ¡gina 5</title>
+		<title>Página 5</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">      
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
@@ -13,7 +13,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	</head>
 	<body>
-	<h4 style="text-align: center;">Â¿A quiÃ©n le toca hoy?</h4>
+	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 	<% String admin = request.getParameter("Identificador"); 
 	%>
 	<div class="container">
@@ -21,12 +21,13 @@
 	<div class="col l12 m12 s12">
 	
 		<table style="margin:0 auto;" class="striped">
-		<form action="MainServlet2" method="get" name="form1">
+		<form action="AnotadorServlet" method="get" name="Anotador">
 			<jsp:include page="AnotarServlet" flush="true"/>
 				<input type="hidden" name="Identificador" value="<%= admin %>">
 				
 			
 			</form>
+			
 		</table>
 	</div>
 	</div>
@@ -39,13 +40,10 @@
         
         
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-      
-      <form action="MainServlet2" method="get" name="form1">
-      <input type="hidden" name="Identificador" value="<%= admin %>">
-        <li><a onclick="document.forms['form1'].submit(); return false;">Anotar</a></li>
-        
-        </form>
+      <li><a onclick="document.forms['Anotador'].submit(); return false;">Anotar</a></li>
+      </ul>
+
   </nav>
-  </form>	
+	
 	</body>
 </html>
