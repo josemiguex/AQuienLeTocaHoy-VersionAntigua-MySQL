@@ -8,8 +8,8 @@ color: white;
 }
 
 .button {
-    background-color: #26b3ff; 
-    border: 2px solid #66c9ff;
+    background-color: #4dd0e1; 
+    border: 2px solid #00bcd4;
     color: white;
     padding: 15px 20px;
     width: 250px;
@@ -46,8 +46,7 @@ background-size: no-repeat center center cover;
 }
 
 .button:hover {
-    background-color: #66c9ff; 
-    color: black;
+    background-color: #00bcd4; 
     
 }
 

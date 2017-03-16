@@ -8,8 +8,8 @@ color: white;
 }
 
 .button {
-    background-color: #42a4f4; 
-    border: 2px solid #63b9ff;
+    background-color: #8d6e63; 
+    border: 2px solid #4b301f;
     color: white;
     padding: 15px 20px;
     width: 250px;
@@ -41,8 +41,8 @@ color: white;
 }
 
 .button:hover {
-    background-color: #63b9ff; 
-    color: black;
+    background-color: #5e3c27; 
+    
     
 }
 
@@ -55,16 +55,20 @@ color: white;
   right: 0;
 }
 
+
 input {
 color: white;
 }
 
-.contenedor {
-
-    margin: 3vw;
+div.uno {
+border-top: 500px;
 }
 
- .input-field input[type=text]:focus + label {
+.input-field label {
+     color: #FFF;
+   }
+   
+   .input-field input[type=text]:focus + label {
      color: #FFF;
    }
    
@@ -96,4 +100,6 @@ color: white;
      color: #FFF;
    }
    
-
+	::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #FFF;
+}

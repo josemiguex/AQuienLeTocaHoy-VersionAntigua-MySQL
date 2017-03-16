@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="CSS/Pagina0.css">
 
 </head>
-<body bgcolor="#FFFFFF" background="http://www.fondos7.net/wallpaper-original/wallpapers/fotos-de-autos-7395.jpg">
+<body bgcolor="#FFFFFF" background="IMG/Pagina0.jpg">
 
 
 	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
@@ -43,7 +43,7 @@
 	
 	<br>
 	
-	<form class="col s12" action="Pagina2.jsp" method="post">
+	<form class="col s12" action="Pagina2.jsp">
 		<div class="row">
 		<legend><h5>Mostrar usuarios de un determinado administrador</h5></legend>
 	       <div class="input-field col l3 m6 s12">

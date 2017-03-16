@@ -9,9 +9,11 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="CSS/Pagina4.css">
+		
 		<title>Página 4</title>
 	</head>
-	<body>
+	<body background="IMG/Pagina4.jpg">
 		<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 		
 		

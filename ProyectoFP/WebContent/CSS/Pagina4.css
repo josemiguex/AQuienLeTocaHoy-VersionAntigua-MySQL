@@ -8,8 +8,8 @@ color: white;
 }
 
 .button {
-    background-color: #c1c1c1; 
-    border: 2px solid #dbdbdb;
+    background-color: #b6b4b7; 
+    border: 2px solid #ebccbb;
     color: white;
     padding: 15px 20px;
     width: 250px;
@@ -41,8 +41,8 @@ color: white;
 }
 
 .button:hover {
-    background-color: #dbdbdb; 
-    color: black;
+    background-color: #616d91; 
+    
     
 }
 
@@ -55,13 +55,13 @@ color: white;
   right: 0;
 }
 
+
 input {
 color: white;
 }
 
-.contenedor {
-
-    margin: 3vw;
+div.uno {
+border-top: 500px;
 }
 
 .input-field label {
@@ -100,6 +100,6 @@ color: white;
      color: #FFF;
    }
    
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+	::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    #FFF;
 }

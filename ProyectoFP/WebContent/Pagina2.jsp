@@ -13,14 +13,14 @@
 <link rel="stylesheet" type="text/css" href="CSS/Pagina2.css">
 
 </head>
-<body background="http://www.wallpapersxl.com/wallpapers/2560x1440/autos-antiguos/1032436/autos-antiguos-hq-bmw-tuning-coches-autom-viles-imagen-1032436.jpg">
+<body background="IMG/Pagina2.jpg">
 
 <h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 
 <div class="container">
 <div class="row">
 <div class="col l12 m12 s12">
-<table style="margin: 0 auto;" class="highlight" bgcolor="#dbdbdb">
+<table style="margin: 0 auto;" class="striped" bgcolor="#dbdbdb">
 <jsp:include page="MostrarTabla" flush="true"/>
 </table>
 </div>
@@ -36,7 +36,7 @@
 <label for="Identificador"> Usuario del administrador</label>
 </div>
 <div class="input-field col l3 m6 s12">
-<input type="password" name="clave" placeholder="Inreuduce su contraseña" required>
+<input type="password" name="clave" placeholder="Introduce su contraseña" required>
 <label for="clave">Clave del administrador</label>
 </div><br><br><br><br>
 <input class="button" type="submit" value="Iniciar Sesión">

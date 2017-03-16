@@ -50,17 +50,19 @@ public class MostrarTabla extends HttpServlet {
 	        stmt = connection.createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
 	        //response.getWriter().append("<table style=\"margin: 0 auto;\">");
-	        response.getWriter().append("<thead><tr><th></th><th>DNI</th><th cosplan=\"3\">Nombre y Apellidos</th></thead>");
+	        response.getWriter().append("<thead><tr><th>Orden</th><th></th><th>DNI</th><th cosplan=\"3\">Nombre y Apellidos</th></thead>");
+	        int i = 1;
 	        while (rs.next()) {
 	        	String dni = rs.getString("DNI");
 	            String nombre = rs.getString("NOMBRE");
 	            String apellido1 = rs.getString("APELLIDO1");
 	            String apellido2 = rs.getString("APELLIDO2");
 	            String ID = rs.getString("ID");
-	            response.getWriter().append("<tr><td></td><td>"+dni+"</td><td cosplan=\"3\">"+nombre+" "+apellido1+" "+apellido2+"</label></td></tr>");
+	            response.getWriter().append("<tr><td>" + i + "</td><td></td><td>"+dni+"</td><td cosplan=\"3\">"+nombre+" "+apellido1+" "+apellido2+"</label></td></tr>");
 	            if (rs.getString("ID").equals(request.getParameter("Identificador"))) {
 	                existe = true;
 	            }
+	            i++;
 	        }
 	       
 		} catch (NamingException e) {

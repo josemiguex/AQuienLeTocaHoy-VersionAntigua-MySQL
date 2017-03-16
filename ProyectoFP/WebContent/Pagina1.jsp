@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="CSS/Pagina1.css">
 
 </head>
-<body bgcolor="#000000" background="http://k37.kn3.net/97F7A6A41.jpg">
+<body bgcolor="#000000" background="IMG/Pagina1.jpeg">
 	
 	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 	<p></p>

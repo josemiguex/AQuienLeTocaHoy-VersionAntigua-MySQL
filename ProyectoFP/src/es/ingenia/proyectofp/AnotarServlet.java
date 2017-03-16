@@ -43,7 +43,7 @@ public class AnotarServlet extends HttpServlet {
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
 	        //response.getWriter().append("<h1 style=\"text-align: center;\">�A QUI�N LE TOCA HOY?</h1>");
-		    String query = "SELECT DNI, NOMBRE, APELLIDO1, APELLIDO2, ID FROM USUARIO WHERE IdAdministrador LIKE '" + request.getParameter("Identificador") + "'";     
+		    String query = "SELECT DNI, NOMBRE, APELLIDO1, APELLIDO2, ID FROM USUARIO WHERE IdAdministrador LIKE '" + request.getParameter("Identificador") + "' ORDER BY (VA/CONDUCTOR) desc";     
 	        stmt = connection.createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
 	        //response.getWriter().append("<table style=\"margin: 0 auto;\">");
