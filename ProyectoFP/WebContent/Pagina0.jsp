@@ -28,7 +28,7 @@
 		<div class="row">
 		<legend><h5>Iniciar sesión</h5></legend>
 	       <div class="input-field col l3 m6 s12">
-			<input type="text" name="Identificador" placeholder="Pon aquí el nombre de usuario del administrador" required>
+			<input type="text" name="Identificador" placeholder="Pon aquí el identificador del administrador" required>
 			<label for="Identificador">Nombre del administrador</label>
 			</div>
 			
@@ -37,13 +37,13 @@
 			<label for="clave">Clave del administrador</label>
 			</div>
 		</div>
-		<b>${msg}</b><br/>
+		<h5><b>${msg}</b></h5><br/>
 		<input class="button" type="submit" value="Iniciar sesión">
 	</form>
 	
 	<br>
 	
-	<form class="col s12" action="Pagina2.jsp">
+	<form class="col s12" action="URLServlet">
 		<div class="row">
 		<legend><h5>Mostrar usuarios de un determinado administrador</h5></legend>
 	       <div class="input-field col l3 m6 s12">
@@ -52,10 +52,12 @@
 			</div>
 			
 			</div>
-			<b>${msg2}</b><br/>
+			<h5><b>${msg2}</b></h5><br/>
 		<input class="button" type="submit" value="Mostrar usuarios"><br/>
 		
 	</form>
 	</div>
+	
+	
 </body>
 </html>

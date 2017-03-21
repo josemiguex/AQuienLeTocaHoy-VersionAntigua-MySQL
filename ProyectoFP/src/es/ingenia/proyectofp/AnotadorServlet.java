@@ -76,7 +76,7 @@ public class AnotadorServlet extends HttpServlet {
 				
 				} 
 
-				String query = "UPDATE USUARIO SET " + value[0].toString() + "=" + value[0].toString() + "+1,VA=VA + 1 WHERE ID=" + key;     
+				String query = "UPDATE USUARIO SET " + value[0].toString() + "=" + value[0].toString() + "+1,VA=VA + 1, FECHA='" + request.getParameter("Fecha") + "', HORA='"+ request.getParameter("Hora") + "' WHERE ID=" + key + "";     
 		        stmt = connection.createStatement();
 		        int rs = stmt.executeUpdate(query);
 		        

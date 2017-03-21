@@ -1,4 +1,4 @@
- package es.ingenia.proyectofp;
+package es.ingenia.proyectofp;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -17,15 +17,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 /**
- * Servlet implementation class MainServlet2
+ * Servlet implementation class MainServlet
  */
-public class MostrarTabla extends HttpServlet {
+public class CambiarContraseña extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MostrarTabla() {
+    public CambiarContraseña() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,30 +39,41 @@ public class MostrarTabla extends HttpServlet {
         Context ctx;
         Connection connection = null;
         Statement stmt = null;
-        boolean existe = false;
-        
+        Statement stmt2 = null;
+        String clave = "";
+        boolean error = false;
+        boolean password = false;
 		try {
 			ctx = new InitialContext();
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
-	        //response.getWriter().append("<h1 style=\"text-align: center;\">�A QUI�N LE TOCA HOY?</h1>");
-		    String query = "SELECT USUARIO.DNI, USUARIO.NOMBRE, USUARIO.APELLIDO1, USUARIO.APELLIDO2 FROM ADMINISTRADOR, USUARIO WHERE ADMINISTRADOR.IDADMINISTRADOR = USUARIO.IDADMINISTRADOR AND CODADMIN = '" + request.getParameter("CodAdmin") + "' ORDER BY (VA/CONDUCTOR) desc";     
+	        String query = "SELECT CLAVE FROM ADMINISTRADOR WHERE IDENTIFICADOR LIKE '" + request.getParameter("Identificador") + "'";
 	        stmt = connection.createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
-	        //response.getWriter().append("<table style=\"margin: 0 auto;\">");
-	        response.getWriter().append("<thead><tr><th>Orden</th><th></th><th>DNI</th><th cosplan=\"3\">Nombre y Apellidos</th></thead>");
-	        int i = 1;
+	        
 	        while (rs.next()) {
-	        	String dni = rs.getString("DNI");
-	            String nombre = rs.getString("NOMBRE");
-	            String apellido1 = rs.getString("APELLIDO1");
-	            String apellido2 = rs.getString("APELLIDO2");
-	          
-	            response.getWriter().append("<tr><td>" + i + "</td><td></td><td>"+dni+"</td><td cosplan=\"3\">"+nombre+" "+apellido1+" "+apellido2+"</label></td></tr>");
-	            i++;
-	            
+	        	clave = rs.getString("CLAVE");
 	        }
-	       
+	        
+	        if (request.getParameter("contraseñaActual").equals(clave)) {
+	        	if (request.getParameter("nuevaContraseña").equals(request.getParameter("nuevaContraseña2"))) {
+	        		String query2 = "UPDATE ADMINISTRADOR SET CLAVE='" + request.getParameter("nuevaContraseña") + "' WHERE IDENTIFICADOR='" + request.getParameter("Identificador") + "'" ;
+	    	        stmt2 = connection.createStatement();
+	    	        int rs2 = stmt.executeUpdate(query2);
+		        } else {
+		        	error = true;
+		        	request.setAttribute("password",true);
+		        }
+		        
+	        } else {
+	        	error = true;
+	        }
+        	//stmt = connection.createStatement();
+	        //int insert = stmt.executeUpdate(query);
+	        
+	        
+	        	
+	        //response.getWriter().append("</table>");
 		} catch (NamingException e) {
 			response.getWriter().append(e.getMessage());
 			e.printStackTrace();
@@ -72,9 +83,13 @@ public class MostrarTabla extends HttpServlet {
 	    } finally {
 	        if (stmt != null) {	        	
 	        	try {
-	        		connection.close();
-	        	stmt.close();
-					
+	        		
+	        			String nextJSP = "/Pagina3.jsp?IdAdministrador=" + request.getParameter("IdAdministrador") + "&Identificador=" + request.getParameter("Identificador");
+	        			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+	        			dispatcher.forward(request,response);
+	        		
+        			connection.close();
+					stmt.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} 
@@ -91,4 +106,3 @@ public class MostrarTabla extends HttpServlet {
 	}
 
 }
-

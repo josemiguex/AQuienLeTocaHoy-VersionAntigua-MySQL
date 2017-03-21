@@ -39,7 +39,10 @@ public class LogInServlet extends HttpServlet {
         Context ctx;
         Connection connection = null;
         Statement stmt = null;
+        Statement stmt2 = null;
         boolean existe = false;
+        String IdAdministrador = "";
+        String identificador = "";
        
 		try {
 			ctx = new InitialContext();
@@ -50,17 +53,18 @@ public class LogInServlet extends HttpServlet {
 	        ResultSet rs = stmt.executeQuery(query);
 	        //response.getWriter().append("<table style=\"margin: 0 auto;\">");
 	        
-            //String identificador = rs.getString("IDENTIFICADOR");
+             identificador = request.getParameter("Identificador");
             //String clave = rs.getString("CLAVE");
 	        while (rs.next())
 	        {
 	        	if (rs.getString("IDENTIFICADOR").equals(request.getParameter("Identificador")) && rs.getString("CLAVE").equals(request.getParameter("clave"))) {
 	                existe = true;
+	                IdAdministrador = rs.getString("IDADMINISTRADOR");
 	        }
             
             }
 	        
-	        	
+	        
 	        //response.getWriter().append("</table>");
 		} catch (NamingException e) {
 			response.getWriter().append(e.getMessage());
@@ -72,7 +76,7 @@ public class LogInServlet extends HttpServlet {
 	        if (stmt != null) {	        	
 	        	try {
 	        		if (existe) {
-	        			String nextJSP = "/Pagina3.jsp";
+	        			String nextJSP = "/Pagina3.jsp?IdAdministrador=" + IdAdministrador + "&Identificador=" + identificador;
 	        			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 	        			dispatcher.forward(request,response);
 	        		} else {
@@ -82,15 +86,16 @@ public class LogInServlet extends HttpServlet {
 	        	        request.setAttribute("msg", msg); 
 	        	        RequestDispatcher rd = request.getRequestDispatcher("/Pagina0.jsp");
 	        	        rd.forward(request, response);
-
 	        			
 	        		}
+	        		connection.close();
 					stmt.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} 
 	        } 
-	    }		
+	    }
+		
 	}
 
 	/**

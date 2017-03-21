@@ -38,10 +38,12 @@
 		<div class="input-field col l6 m6 s12">
 		<input type="email" name="email" placeholder="Correo electrónico" required>
 		<label for="email" data-error="wrong" data-success="right">Correo electrónico</label>
-		<%String id = request.getParameter("admin");
+		<%String id = request.getParameter("IdAdministrador");
+		  String identificador = request.getParameter("Identificador");	
 		%>
 				
-		<input type="hidden" name="Identificador" value=<%=id %>>
+		<input type="hidden" name="IdAdministrador" value=<%=id %>>
+		<input type="hidden" name="Identificador" value=<%=identificador %>>
 		</div>
 		<br><br><br><br>
 		<center>

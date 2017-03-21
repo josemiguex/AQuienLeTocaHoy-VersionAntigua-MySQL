@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="java.util.Random" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,6 +15,27 @@
 </head>
 <body bgcolor="#000000" background="IMG/Pagina1.jpeg">
 	
+	<%!
+	String getCadenaAlfanumAleatoria (int longitud){
+		String cadenaAleatoria = "";
+		long milis = new java.util.GregorianCalendar().getTimeInMillis();
+		Random r = new Random(milis);
+		int i = 0;
+		while ( i < longitud){
+		char c = (char)r.nextInt(255);
+		if ( (c >= '0' && c <='9') || (c >='A' && c <='Z') ){
+		cadenaAleatoria += c;
+		i ++;
+		}
+		}
+		return cadenaAleatoria;
+		}
+	%>
+	
+	<%
+	String codAdmin = getCadenaAlfanumAleatoria(10);
+	%>
+	
 	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 	<p></p>
 		<div class="row">
@@ -22,9 +43,10 @@
 		<div class="row">
 		<legend><h5 text-color="blue">Registrarse</h5></legend>
 	   
+	 
 			<div class="input-field col l4 m6 s12">
-			<input type="text" name="Identificador" placeholder="Elige el nombre del usuario" required>
-			<label for="Identificador">Nombre de usuario</label>
+			<input type="text" name="Identificador" placeholder="Elija el nombre del administrador" required>
+			<label for="Identificador">Nombre del administrador</label>
 			</div>
 			
 			<div class="input-field col l4 m6 s12">
@@ -34,7 +56,7 @@
 			
 			
 		</div>
-		
+		<input type="hidden" name="codAdmin" value="<%= codAdmin %>">
 		<input class="button" type="submit" value="Registrarse"><br/>
 		</form>
 		

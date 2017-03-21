@@ -19,13 +19,13 @@ import javax.sql.DataSource;
 /**
  * Servlet implementation class MainServlet2
  */
-public class MostrarTabla extends HttpServlet {
+public class URLServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MostrarTabla() {
+    public URLServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,27 +40,22 @@ public class MostrarTabla extends HttpServlet {
         Connection connection = null;
         Statement stmt = null;
         boolean existe = false;
+        String codAdmin = "";
         
 		try {
 			ctx = new InitialContext();
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
 	        //response.getWriter().append("<h1 style=\"text-align: center;\">�A QUI�N LE TOCA HOY?</h1>");
-		    String query = "SELECT USUARIO.DNI, USUARIO.NOMBRE, USUARIO.APELLIDO1, USUARIO.APELLIDO2 FROM ADMINISTRADOR, USUARIO WHERE ADMINISTRADOR.IDADMINISTRADOR = USUARIO.IDADMINISTRADOR AND CODADMIN = '" + request.getParameter("CodAdmin") + "' ORDER BY (VA/CONDUCTOR) desc";     
+		    String query = "SELECT CODADMIN FROM ADMINISTRADOR WHERE IDENTIFICADOR LIKE '" + request.getParameter("Identificador") + "'";     
 	        stmt = connection.createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
 	        //response.getWriter().append("<table style=\"margin: 0 auto;\">");
 	        response.getWriter().append("<thead><tr><th>Orden</th><th></th><th>DNI</th><th cosplan=\"3\">Nombre y Apellidos</th></thead>");
 	        int i = 1;
 	        while (rs.next()) {
-	        	String dni = rs.getString("DNI");
-	            String nombre = rs.getString("NOMBRE");
-	            String apellido1 = rs.getString("APELLIDO1");
-	            String apellido2 = rs.getString("APELLIDO2");
-	          
-	            response.getWriter().append("<tr><td>" + i + "</td><td></td><td>"+dni+"</td><td cosplan=\"3\">"+nombre+" "+apellido1+" "+apellido2+"</label></td></tr>");
-	            i++;
-	            
+	        	codAdmin = rs.getString("CODADMIN");
+	   
 	        }
 	       
 		} catch (NamingException e) {
@@ -72,6 +67,7 @@ public class MostrarTabla extends HttpServlet {
 	    } finally {
 	        if (stmt != null) {	        	
 	        	try {
+	        		response.sendRedirect(request.getContextPath() + "/Pagina2.jsp?CodAdmin=" + codAdmin);
 	        		connection.close();
 	        	stmt.close();
 					

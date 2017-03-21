@@ -38,18 +38,30 @@ public class AñadirAdmin extends HttpServlet {
         Context ctx;
         Connection connection = null;
         Statement stmt = null;
+        Statement stmt2 = null;
         boolean error = false;
+        String idAdministrador = "";
 		try {
 			
 			ctx = new InitialContext();
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
 	        		    
-		    String query = "insert into ADMINISTRADOR (IDENTIFICADOR, CLAVE) values ('" + request.getParameter("Identificador") + "','" + request.getParameter("clave") + "')" ;	        
+		    String query = "insert into ADMINISTRADOR (IDENTIFICADOR, CLAVE, CODADMIN) values ('" + request.getParameter("Identificador") + "','" + request.getParameter("clave") + "','" + request.getParameter("codAdmin") + "')" ;	        
 	        
 		    stmt = connection.createStatement();
 	        int insert = stmt.executeUpdate(query);
 	        
+	        String query2 = "SELECT IDADMINISTRADOR FROM ADMINISTRADOR WHERE IDENTIFICADOR LIKE '" + request.getParameter("Identificador") + "'" ;	        
+	        
+		    stmt2 = connection.createStatement();
+		    ResultSet rs2 = stmt2.executeQuery(query2);
+		    
+		    while (rs2.next())
+	        {
+		    	idAdministrador = rs2.getString("IDADMINISTRADOR");
+	        }
+		    
 	 
 		} catch (NamingException e) {
 			
@@ -65,9 +77,10 @@ public class AñadirAdmin extends HttpServlet {
 	        if (stmt != null) {	        	
 	        	try {
 	        		if (!error) {
-	        		String nextJSP = "/Pagina3.jsp";
+	        		String nextJSP = "/Pagina3.jsp?IdAdministrador=" + idAdministrador;
 	    			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 	    			dispatcher.forward(request,response);
+	    			connection.close();
 					stmt.close();
 	        		}
 				} catch (SQLException e) {

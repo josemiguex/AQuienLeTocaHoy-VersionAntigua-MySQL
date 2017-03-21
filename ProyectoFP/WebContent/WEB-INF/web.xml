@@ -84,6 +84,24 @@
   <url-pattern>/AnotarServlet</url-pattern>
 </servlet-mapping>  
 
+<servlet>
+  <servlet-name>URLServlet</servlet-name>
+  <servlet-class>es.ingenia.proyectofp.URLServlet</servlet-class>
+</servlet>
+ <servlet-mapping>
+  <servlet-name>URLServlet</servlet-name>
+  <url-pattern>/URLServlet</url-pattern>
+</servlet-mapping>  
+
+<servlet>
+  <servlet-name>CambiarContraseña</servlet-name>
+  <servlet-class>es.ingenia.proyectofp.CambiarContraseña</servlet-class>
+</servlet>
+ <servlet-mapping>
+  <servlet-name>CambiarContraseña</servlet-name>
+  <url-pattern>/CambiarContraseña</url-pattern>
+</servlet-mapping>  
+
  <resource-ref>
       <description>ProyectoFP Connection</description>
       <res-ref-name>jdbc/ProyectoFP</res-ref-name>

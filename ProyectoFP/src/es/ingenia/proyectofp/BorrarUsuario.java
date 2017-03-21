@@ -75,6 +75,7 @@ public class BorrarUsuario extends HttpServlet {
 	        		String nextJSP = "/Pagina3.jsp";
         			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
         			dispatcher.forward(request,response);
+        			connection.close();
 					stmt.close();
 				} catch (SQLException e) {
 					e.printStackTrace();

@@ -43,7 +43,7 @@ public class AñadirUsuario extends HttpServlet {
 			ctx = new InitialContext();
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
-		    String query = "INSERT INTO USUARIO (DNI, NOMBRE, APELLIDO1, APELLIDO2, EMAIL, IdAdministrador) VALUES ('" + request.getParameter("DNI") + "','" + request.getParameter("Nombre") + "','" + request.getParameter("Apellido1") + "','" + request.getParameter("Apellido2") + "','" + request.getParameter("email") + "','" + request.getParameter("Identificador") + "')"; 
+		    String query = "INSERT INTO USUARIO (DNI, NOMBRE, APELLIDO1, APELLIDO2, EMAIL, IdAdministrador) VALUES ('" + request.getParameter("DNI") + "','" + request.getParameter("Nombre") + "','" + request.getParameter("Apellido1") + "','" + request.getParameter("Apellido2") + "','" + request.getParameter("email") + "','" + request.getParameter("IdAdministrador") + "')"; 
 	        stmt = connection.createStatement();
 	        int insert = stmt.executeUpdate(query);
 	        
@@ -59,9 +59,10 @@ public class AñadirUsuario extends HttpServlet {
 	    } finally {
 	        if (stmt != null) {	        	
 	        	try {
-	        		String nextJSP = "/Pagina3.jsp";
+	        		String nextJSP = "/Pagina3.jsp?IdAdministrador=" + request.getParameter("IdAdministrador");
         			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
         			dispatcher.forward(request,response);
+        			connection.close();
 					stmt.close();
 				} catch (SQLException e) {
 					e.printStackTrace();

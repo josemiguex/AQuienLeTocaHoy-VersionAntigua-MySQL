@@ -28,12 +28,12 @@
 </div>
 
 <div class="contenedor">
-<form class="col s12" action="LogInServlet">
+<form class="col s12" action="LogInServlet" method="post">
 <div class="row">
 <legend><h5>Iniciar sesión</h5></legend>
 <div class="input-field col l3 m6 s12">
-<input type="text" name="Identificador" placeholder="Introduce el nombre de usuario" required>
-<label for="Identificador"> Usuario del administrador</label>
+<input type="text" name="Identificador" placeholder="Introduce el identificador del administrador" required>
+<label for="Identificador"> Identificador del administrador</label>
 </div>
 <div class="input-field col l3 m6 s12">
 <input type="password" name="clave" placeholder="Introduce su contraseña" required>
@@ -43,11 +43,12 @@
 </div>
 </form>
 
-<form class="col s12" action="">
+<form class="col s12" action="URLServlet">
 <div class="row">
 <legend><h5>¿Quieres ver otra tabla?</h5></legend>
 <div class="input-field col l3 m6 s12">
 <input type="text" name="Identificador" placeholder="Introduce el usuario del administrador" required>
+
 <label for="Identificador"> Usuario del administrador</label>
 </div>
 <input class="button" type="submit" value="Buscar tabla">
