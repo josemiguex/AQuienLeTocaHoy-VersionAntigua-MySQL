@@ -62,11 +62,14 @@ public class CambiarContraseña extends HttpServlet {
 	    	        int rs2 = stmt.executeUpdate(query2);
 		        } else {
 		        	error = true;
-		        	request.setAttribute("password",true);
+		        	request.setAttribute("newPassword",true);
+		        	
 		        }
 		        
 	        } else {
 	        	error = true;
+	        	request.setAttribute("actualPassword",true);
+
 	        }
         	//stmt = connection.createStatement();
 	        //int insert = stmt.executeUpdate(query);
@@ -83,7 +86,9 @@ public class CambiarContraseña extends HttpServlet {
 	    } finally {
 	        if (stmt != null) {	        	
 	        	try {
-	        		
+	        		if (!error) {
+	        			request.setAttribute("noError",true);
+	        		}
 	        			String nextJSP = "/Pagina3.jsp?IdAdministrador=" + request.getParameter("IdAdministrador") + "&Identificador=" + request.getParameter("Identificador");
 	        			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 	        			dispatcher.forward(request,response);

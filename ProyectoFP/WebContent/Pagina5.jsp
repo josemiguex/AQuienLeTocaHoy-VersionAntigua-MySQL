@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -12,12 +12,38 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link rel="stylesheet" type="text/css" href="CSS/Pagina0.css">
-		
+		<script>
+		 $('.datepicker').pickadate({
+			    selectMonths: true, // Creates a dropdown to control month
+			    selectYears: 15 // Creates a dropdown of 15 years to control year
+			  });
+		</script>
 	</head>
 	<body background="IMG/Pagina5.jpg">
 	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 	<% String admin = request.getParameter("Identificador"); 
 	String idadministrador = request.getParameter("IdAdministrador"); 
+	
+	Date fecha = new Date();
+	Calendar c1 = Calendar.getInstance();
+	Calendar c2 = new GregorianCalendar();
+	
+	String date = String.valueOf(c1.get(Calendar.DAY_OF_MONTH)) + "." + String.valueOf(c1.get(Calendar.MONTH) + 1) + "." + String.valueOf(c1.get(Calendar.YEAR));
+	
+	String hora = "";
+	if (String.valueOf(c1.get(Calendar.HOUR_OF_DAY)).length() == 2) {
+		hora += String.valueOf(c1.get(Calendar.HOUR_OF_DAY));
+		} else {
+		hora += "0" + String.valueOf(c1.get(Calendar.HOUR_OF_DAY));
+		}
+	
+	hora += ":";
+	if (String.valueOf(c1.get(Calendar.MINUTE)).length() == 2) {
+		hora += String.valueOf(c1.get(Calendar.MINUTE));
+		} else {
+		hora += "0" + String.valueOf(c1.get(Calendar.MINUTE));
+		}
+	
 	%>
 	<div class="container">
 	<div class="row">
@@ -32,9 +58,13 @@
 			
 			
 		</table>
+		<br/>
 		
-	<input class="input-field col l6 m6 s12" type="text" name="Fecha" placeholder="AAAA/MM/DD">
-	<input class="input-field col l6 m6 s12" type="text" name="Hora" placeholder="HH:MM">
+			<input  class="input-field col l6 m6 s12" type="text" name="Fecha" value="<%= date %>"  style="background: #d7ccc8">
+			
+	<input class="input-field col l6 m6 s12" type="text" name="Hora" value="<%= hora %>"   required  style="background: #d7ccc8">
+			
+	</table>
 	</form>
 	</div>
 	</div>

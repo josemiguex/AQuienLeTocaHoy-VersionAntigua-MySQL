@@ -46,19 +46,30 @@ public class MostrarTabla extends HttpServlet {
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
 	        //response.getWriter().append("<h1 style=\"text-align: center;\">�A QUI�N LE TOCA HOY?</h1>");
-		    String query = "SELECT USUARIO.DNI, USUARIO.NOMBRE, USUARIO.APELLIDO1, USUARIO.APELLIDO2 FROM ADMINISTRADOR, USUARIO WHERE ADMINISTRADOR.IDADMINISTRADOR = USUARIO.IDADMINISTRADOR AND CODADMIN = '" + request.getParameter("CodAdmin") + "' ORDER BY (VA/CONDUCTOR) desc";     
+		    String query = "SELECT USUARIO.DNI, USUARIO.NOMBRE, USUARIO.APELLIDO1, USUARIO.APELLIDO2, USUARIO.FECHA, USUARIO.HORA, USUARIO.CONDUCTOR, USUARIO.PASAJERO FROM ADMINISTRADOR, USUARIO WHERE ADMINISTRADOR.IDADMINISTRADOR = USUARIO.IDADMINISTRADOR AND CODADMIN = '" + request.getParameter("CodAdmin") + "' ORDER BY (USUARIO.VA/USUARIO.CONDUCTOR) desc, USUARIO.FECHA asc, USUARIO.HORA asc";     
 	        stmt = connection.createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
 	        //response.getWriter().append("<table style=\"margin: 0 auto;\">");
-	        response.getWriter().append("<thead><tr><th>Orden</th><th></th><th>DNI</th><th cosplan=\"3\">Nombre y Apellidos</th></thead>");
+	        response.getWriter().append("<thead><tr><th>Orden</th><th></th><th>DNI</th><th cosplan=\"3\">Nombre y Apellidos</th><th>Pasajero</th><th>Conductor</th><th>Última fecha y hora</th></thead>");
 	        int i = 1;
 	        while (rs.next()) {
 	        	String dni = rs.getString("DNI");
 	            String nombre = rs.getString("NOMBRE");
 	            String apellido1 = rs.getString("APELLIDO1");
 	            String apellido2 = rs.getString("APELLIDO2");
-	          
-	            response.getWriter().append("<tr><td>" + i + "</td><td></td><td>"+dni+"</td><td cosplan=\"3\">"+nombre+" "+apellido1+" "+apellido2+"</label></td></tr>");
+	            String pasajero = rs.getString("PASAJERO"); 
+	            String fecha = rs.getString("FECHA");
+	            String hora = rs.getString("HORA");
+	            
+	            String conductor = rs.getString("CONDUCTOR");
+	            
+	            int pasajeroNum = Integer.parseInt(pasajero) - 1;
+	            int conductorNum = Integer.parseInt(conductor) - 1;
+	            
+	             pasajero = Integer.toString(pasajeroNum);  
+	            
+	             conductor = Integer.toString(conductorNum);  
+	            response.getWriter().append("<tr><td>" + i + "</td><td></td><td>"+dni+"</td><td cosplan=\"3\">"+nombre+" "+apellido1+" "+apellido2+"</label></td><td>" + pasajero + "</td><td>" + conductor + "</td><td colspan=\"2\"> " +  fecha + " " + hora + "</td></tr>");
 	            i++;
 	            
 	        }

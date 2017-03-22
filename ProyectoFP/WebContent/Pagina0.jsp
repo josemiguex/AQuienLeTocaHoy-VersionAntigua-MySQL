@@ -15,7 +15,12 @@
 </head>
 <body bgcolor="#FFFFFF" background="IMG/Pagina0.jpg">
 
-
+<script>
+	if (${IncorrectData == 'true'}) {
+		  alert("Usuario o contraseña incorrectos");
+	}
+	</script>
+	
 	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 	
 	<div class="contenedor">
@@ -37,7 +42,7 @@
 			<label for="clave">Clave del administrador</label>
 			</div>
 		</div>
-		<h5><b>${msg}</b></h5><br/>
+		
 		<input class="button" type="submit" value="Iniciar sesión">
 	</form>
 	

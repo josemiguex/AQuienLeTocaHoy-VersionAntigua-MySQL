@@ -64,6 +64,10 @@ public class LogInServlet extends HttpServlet {
             
             }
 	        
+	        if (!existe) {
+	        	request.setAttribute("IncorrectData",true);
+	        }
+	        
 	        
 	        //response.getWriter().append("</table>");
 		} catch (NamingException e) {

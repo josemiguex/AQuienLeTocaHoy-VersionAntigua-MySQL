@@ -21,10 +21,23 @@
 	%>
 	
 	<script>
-	if (${password == 'true'}) {
-		  alert("Contraseña actual incorrecta");
+	if (${actualPassword == 'true'}) {
+		  alert("No se ha podido cambiar la contraseña debido a que la contraseña actual que has introducido es incorrecta");
 	}
 	</script>
+	
+	<script>
+	if (${noError == 'true'}) {
+		  alert("Contraseña cambiada correctamente");
+	}
+	</script>
+	
+	<script>
+	if (${newPassword == 'true'}) {
+		  alert("No se ha podido cambiar la contraseña debido a que los campos no coinciden");
+	}
+	</script>
+	
 	<div class="container">
 	<div class="row">
 	<div class="col l12 m12 s12">
@@ -54,7 +67,8 @@
       
       </form>
       
-      <form action="Pagina6.jsp" name="form4">
+      <form action="Pagina6.jsp" name="form4" method="post">
+      <input type="hidden" name="IdAdministrador" value="<%= IdAdministrador %>">
       <input type="hidden" name="Identificador" value="<%= identificador %>">
       </form>
       
