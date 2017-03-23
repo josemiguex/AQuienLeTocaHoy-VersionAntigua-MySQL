@@ -11,6 +11,15 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		
+		<style>
+body {
+background-image: url(IMG/Pagina3.jpg);
+background-attachment: fixed;/*para que sea estático*/
+background-position: top left;/*arriba a la derecha*/
+background-repeat: no-repeat;/*que no se repita el fondo*/
+}
+</style>
 	</head>
 	<body background="IMG/Pagina3.jpg">
 	<h4 style="text-align: center; color: white;text-shadow: 0.1em 0.1em #333;">¿A quién le toca hoy?</h4>
@@ -20,11 +29,7 @@
 		
 	%>
 	
-	<script>
-	if (${actualPassword == 'true'}) {
-		  alert("No se ha podido cambiar la contraseña debido a que la contraseña actual que has introducido es incorrecta");
-	}
-	</script>
+	
 	
 	<script>
 	if (${noError == 'true'}) {
@@ -32,11 +37,7 @@
 	}
 	</script>
 	
-	<script>
-	if (${newPassword == 'true'}) {
-		  alert("No se ha podido cambiar la contraseña debido a que los campos no coinciden");
-	}
-	</script>
+	
 	
 	<div class="container">
 	<div class="row">
@@ -95,6 +96,5 @@
      
     </div>
   </nav>
- 	
 	</body>
 </html>

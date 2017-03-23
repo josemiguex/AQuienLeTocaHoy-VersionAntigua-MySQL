@@ -18,8 +18,17 @@
 			    selectYears: 15 // Creates a dropdown of 15 years to control year
 			  });
 		</script>
+		
+			<style>
+				body {
+				background-image: url(IMG/Pagina5.jpg);
+				background-attachment: fixed;/*para que sea estático*/
+				background-position: top right;/*arriba a la derecha*/
+				background-repeat: no-repeat;/*que no se repita el fondo*/
+				}
+			</style>
 	</head>
-	<body background="IMG/Pagina5.jpg">
+	<body >
 	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 	<% String admin = request.getParameter("Identificador"); 
 	String idadministrador = request.getParameter("IdAdministrador"); 
@@ -28,7 +37,7 @@
 	Calendar c1 = Calendar.getInstance();
 	Calendar c2 = new GregorianCalendar();
 	
-	String date = String.valueOf(c1.get(Calendar.DAY_OF_MONTH)) + "." + String.valueOf(c1.get(Calendar.MONTH) + 1) + "." + String.valueOf(c1.get(Calendar.YEAR));
+	String date = String.valueOf(c1.get(Calendar.DAY_OF_MONTH)) + "/" + String.valueOf(c1.get(Calendar.MONTH) + 1) + "/" + String.valueOf(c1.get(Calendar.YEAR));
 	
 	String hora = "";
 	if (String.valueOf(c1.get(Calendar.HOUR_OF_DAY)).length() == 2) {

@@ -54,6 +54,10 @@
 			<label for="clave">Contraseña</label>
 			</div>
 			
+			<div class="input-field col l4 m6 s12">
+			<input type="email" name="Email" placeholder="Escriba su email" required>
+			<label for="Email">Email</label>
+			</div>
 			
 		</div>
 		<input type="hidden" name="codAdmin" value="<%= codAdmin %>">

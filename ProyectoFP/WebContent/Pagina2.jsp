@@ -11,9 +11,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Página 2</title>
 <link rel="stylesheet" type="text/css" href="CSS/Pagina2.css">
+<style>
+body {
+background-image: url(IMG/Pagina2.jpg);
+background-attachment: fixed;/*para que sea estático*/
+background-position: top right;/*arriba a la derecha*/
+background-repeat: no-repeat;/*que no se repita el fondo*/
+}
+</style>
 
 </head>
-<body background="IMG/Pagina2.jpg">
+<body>
 
 <h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 
@@ -42,6 +50,7 @@
 <input class="button" type="submit" value="Iniciar Sesión">
 </div>
 </form>
+	<p><a href="Pagina7.jsp">¿Has olvidado tu contraseña?</a></p>
 
 <form class="col s12" action="URLServlet">
 <div class="row">
@@ -55,5 +64,7 @@
 </div>
 </form>
 </div>
+
+
 </body>
 </html>

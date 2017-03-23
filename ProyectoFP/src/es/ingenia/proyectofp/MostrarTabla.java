@@ -46,7 +46,7 @@ public class MostrarTabla extends HttpServlet {
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
 	        //response.getWriter().append("<h1 style=\"text-align: center;\">�A QUI�N LE TOCA HOY?</h1>");
-		    String query = "SELECT USUARIO.DNI, USUARIO.NOMBRE, USUARIO.APELLIDO1, USUARIO.APELLIDO2, USUARIO.FECHA, USUARIO.HORA, USUARIO.CONDUCTOR, USUARIO.PASAJERO FROM ADMINISTRADOR, USUARIO WHERE ADMINISTRADOR.IDADMINISTRADOR = USUARIO.IDADMINISTRADOR AND CODADMIN = '" + request.getParameter("CodAdmin") + "' ORDER BY (USUARIO.VA/USUARIO.CONDUCTOR) desc, USUARIO.FECHA asc, USUARIO.HORA asc";     
+		    String query = "SELECT USUARIO.DNI, USUARIO.NOMBRE, USUARIO.APELLIDO1, USUARIO.APELLIDO2, date_format(FECHA, '%d/%m/%Y'), time_format(HORA, '%H:%i'), USUARIO.CONDUCTOR, USUARIO.PASAJERO FROM ADMINISTRADOR, USUARIO WHERE ADMINISTRADOR.IDADMINISTRADOR = USUARIO.IDADMINISTRADOR AND CODADMIN = '" + request.getParameter("CodAdmin") + "' ORDER BY (USUARIO.VA/USUARIO.CONDUCTOR) desc, USUARIO.FECHA asc, USUARIO.HORA asc";     
 	        stmt = connection.createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
 	        //response.getWriter().append("<table style=\"margin: 0 auto;\">");
@@ -58,8 +58,8 @@ public class MostrarTabla extends HttpServlet {
 	            String apellido1 = rs.getString("APELLIDO1");
 	            String apellido2 = rs.getString("APELLIDO2");
 	            String pasajero = rs.getString("PASAJERO"); 
-	            String fecha = rs.getString("FECHA");
-	            String hora = rs.getString("HORA");
+	            String fecha = rs.getString("date_format(FECHA, '%d/%m/%Y')");
+	            String hora = rs.getString("time_format(HORA, '%H:%i')");
 	            
 	            String conductor = rs.getString("CONDUCTOR");
 	            

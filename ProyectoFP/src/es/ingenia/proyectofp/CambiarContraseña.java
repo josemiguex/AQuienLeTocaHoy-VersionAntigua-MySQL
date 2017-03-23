@@ -55,9 +55,10 @@ public class CambiarContraseña extends HttpServlet {
 	        	clave = rs.getString("CLAVE");
 	        }
 	        
-	        if (request.getParameter("contraseñaActual").equals(clave)) {
-	        	if (request.getParameter("nuevaContraseña").equals(request.getParameter("nuevaContraseña2"))) {
-	        		String query2 = "UPDATE ADMINISTRADOR SET CLAVE='" + request.getParameter("nuevaContraseña") + "' WHERE IDENTIFICADOR='" + request.getParameter("Identificador") + "'" ;
+	        String contraseñaActual = request.getParameter("contrasenaActual");
+	        if (contraseñaActual.equals(clave)) {
+	        	if (request.getParameter("nuevaContrasena").equals(request.getParameter("nuevaContrasena2"))) {
+	        		String query2 = "UPDATE ADMINISTRADOR SET CLAVE='" + request.getParameter("nuevaContrasena") + "' WHERE IDENTIFICADOR='" + request.getParameter("Identificador") + "'" ;
 	    	        stmt2 = connection.createStatement();
 	    	        int rs2 = stmt.executeUpdate(query2);
 		        } else {
@@ -88,10 +89,15 @@ public class CambiarContraseña extends HttpServlet {
 	        	try {
 	        		if (!error) {
 	        			request.setAttribute("noError",true);
-	        		}
 	        			String nextJSP = "/Pagina3.jsp?IdAdministrador=" + request.getParameter("IdAdministrador") + "&Identificador=" + request.getParameter("Identificador");
 	        			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 	        			dispatcher.forward(request,response);
+	        		} else {
+	        			String nextJSP = "/Pagina6.jsp";
+	        			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+	        			dispatcher.forward(request,response);
+	        		}
+	        			
 	        		
         			connection.close();
 					stmt.close();

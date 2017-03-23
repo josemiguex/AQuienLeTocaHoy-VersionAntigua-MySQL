@@ -20,25 +20,37 @@
 	
 	
 	%>
+	
+	<script>
+	if (${actualPassword == 'true'}) {
+		  alert("No se ha podido cambiar la contraseña debido a que la contraseña actual que has introducido es incorrecta");
+	}
+	</script>
+	
+	<script>
+	if (${newPassword == 'true'}) {
+		  alert("No se ha podido cambiar la contraseña debido a que los campos no coinciden");
+	}
+	</script>
 <div class="contenedor">
 <legend><h5>Selección de nueva contraseña</h5></legend>
-<form class="col s12" action="CambiarContraseña">
+<form class="col s12" action="CambiarContraseña" method="post">
 <div class="row">
 
 <div class="input-field col l4 m12 s12">
-	<input type="password" name="contraseñaActual" placeholder="Pon aquí la contraseña actual" required>
-	<label for="contraseñaActual">Contraseña actual</label>
+	<input type="password" id="contrasenaActual" name="contrasenaActual" placeholder="Pon aquí la contraseña actual" required>
+	<label for="contraseaActual">Contraseña actual</label>
 	
 	</div>
 	<div class="input-field col l4 m12 s12">
-	<input type="password" name="nuevaContraseña" placeholder="Pon aquí la nueva contraseña" required>
-	<label for="nuevaContraseña">Nueva contraseña</label>
+	<input type="password" name="nuevaContrasena" id="nuevaContrasena" placeholder="Pon aquí la nueva contraseña" required>
+	<label for="nuevaContrasena">Nueva contraseña</label>
 	</div>
 	
 	<div class="input-field col l4 m12 s12">
 	
-	<input type="password" name="nuevaContraseña2" placeholder="Repite la nueva contraseña" required>
-	<label for="nuevaContraseña"></label>
+	<input type="password" name="nuevaContrasena2" id="nuevaContrasena2" placeholder="Repite la nueva contraseña" required>
+	<label for="nuevaContrasena2"></label>
 	</div>
 	
 	<input type="hidden" name="Identificador" value="<%= identificador %>">

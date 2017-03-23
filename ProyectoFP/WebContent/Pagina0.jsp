@@ -13,12 +13,17 @@
 <link rel="stylesheet" type="text/css" href="CSS/Pagina0.css">
 
 </head>
-<body bgcolor="#FFFFFF" background="IMG/Pagina0.jpg">
+<body background="IMG/Pagina0.jpg">
 
 <script>
 	if (${IncorrectData == 'true'}) {
 		  alert("Usuario o contraseña incorrectos");
 	}
+	
+	if (${noErrorEmail == 'true'}) {
+		  alert("Se ha enviado un email con la nueva contraseña");
+	}
+	
 	</script>
 	
 	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
@@ -29,6 +34,7 @@
 	<a href="Pagina1.jsp"><button class="button"><span>Pulse aquí para registrarse</span></button></a>
 	<br/>
 	<br/>
+	
 		<form class="col s12" action="LogInServlet" method="post">
 		<div class="row">
 		<legend><h5>Iniciar sesión</h5></legend>
@@ -45,6 +51,7 @@
 		
 		<input class="button" type="submit" value="Iniciar sesión">
 	</form>
+	<p><a href="Pagina7.jsp">¿Has olvidado tu contraseña?</a></p>
 	
 	<br>
 	

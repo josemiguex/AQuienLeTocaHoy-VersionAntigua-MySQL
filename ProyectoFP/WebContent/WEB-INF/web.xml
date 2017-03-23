@@ -102,6 +102,15 @@
   <url-pattern>/CambiarContraseña</url-pattern>
 </servlet-mapping>  
 
+<servlet>
+  <servlet-name>EnviaEmail</servlet-name>
+  <servlet-class>es.ingenia.proyectofp.EnviaEmail</servlet-class>
+</servlet>
+ <servlet-mapping>
+  <servlet-name>EnviaEmail</servlet-name>
+  <url-pattern>/EnviaEmail</url-pattern>
+</servlet-mapping>  
+
  <resource-ref>
       <description>ProyectoFP Connection</description>
       <res-ref-name>jdbc/ProyectoFP</res-ref-name>

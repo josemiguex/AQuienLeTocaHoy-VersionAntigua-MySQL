@@ -48,6 +48,7 @@ public class LogInServlet extends HttpServlet {
 			ctx = new InitialContext();
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
+	        
 		    String query = "SELECT * FROM ADMINISTRADOR WHERE IDENTIFICADOR='" + request.getParameter("Identificador") + "' AND CLAVE='" + request.getParameter("clave") + "'"; 
 	        stmt = connection.createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
@@ -73,7 +74,7 @@ public class LogInServlet extends HttpServlet {
 		} catch (NamingException e) {
 			response.getWriter().append(e.getMessage());
 			e.printStackTrace();
-	    } catch (SQLException e ) {
+	    } catch (SQLException e) {
 			e.printStackTrace();
 			response.getWriter().append(e.getMessage());	        
 	    } finally {

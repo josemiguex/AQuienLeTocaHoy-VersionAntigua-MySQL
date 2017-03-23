@@ -47,7 +47,7 @@ public class AñadirAdmin extends HttpServlet {
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
 	        		    
-		    String query = "insert into ADMINISTRADOR (IDENTIFICADOR, CLAVE, CODADMIN) values ('" + request.getParameter("Identificador") + "','" + request.getParameter("clave") + "','" + request.getParameter("codAdmin") + "')" ;	        
+		    String query = "insert into ADMINISTRADOR (IDENTIFICADOR, CLAVE, CODADMIN, EMAIL) values ('" + request.getParameter("Identificador") + "','" + request.getParameter("clave") + "','" + request.getParameter("codAdmin") + "','" + request.getParameter("Email") + "')" ;	        
 	        
 		    stmt = connection.createStatement();
 	        int insert = stmt.executeUpdate(query);
