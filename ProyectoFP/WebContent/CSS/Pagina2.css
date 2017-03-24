@@ -57,6 +57,8 @@ color: white;
 
 input {
 color: white;
+text-shadow: 0.1em 0.1em #333;
+
 }
 
 .contenedor {
@@ -66,10 +68,14 @@ color: white;
 
 .input-field label {
      color: #FFF;
+     text-shadow: 0.1em 0.1em #333;
+     
    }
    
    .input-field input[type=text]:focus + label {
      color: #FFF;
+     text-shadow: 0.1em 0.1em #333;
+     
    }
    
       .input-field input[type=text]:focus {
@@ -79,6 +85,8 @@ color: white;
    
    .input-field input[type=password]:focus + label {
      color: #FFF;
+     text-shadow: 0.1em 0.1em #333;
+     
    }
    
       .input-field input[type=password]:focus {

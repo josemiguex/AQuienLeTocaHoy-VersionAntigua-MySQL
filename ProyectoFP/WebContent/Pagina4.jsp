@@ -12,8 +12,17 @@
 		<link rel="stylesheet" type="text/css" href="CSS/Pagina4.css">
 		
 		<title>Página 4</title>
+		
+		<style>
+body {
+background-image: url(IMG/Pagina4.jpg);
+background-attachment: fixed;/*para que sea estático*/
+background-position: bottom center;/*arriba a la derecha*/
+background-repeat: no-repeat;/*que no se repita el fondo*/
+}
+</style>
 	</head>
-	<body background="IMG/Pagina4.jpg">
+	<body>
 		<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 		
 		

@@ -70,10 +70,10 @@ public class MostrarTabla extends HttpServlet {
 	            
 	             conductor = Integer.toString(conductorNum);  
 	            response.getWriter().append("<tr><td>" + i + "</td><td></td><td>"+dni+"</td><td cosplan=\"3\">"+nombre+" "+apellido1+" "+apellido2+"</label></td><td>" + pasajero + "</td><td>" + conductor + "</td><td colspan=\"2\"> " +  fecha + " " + hora + "</td></tr>");
-	            i++;
-	            
+	            i++;	            
 	        }
 	       
+	        
 		} catch (NamingException e) {
 			response.getWriter().append(e.getMessage());
 			e.printStackTrace();
@@ -83,6 +83,7 @@ public class MostrarTabla extends HttpServlet {
 	    } finally {
 	        if (stmt != null) {	        	
 	        	try {
+	        		
 	        		connection.close();
 	        	stmt.close();
 					

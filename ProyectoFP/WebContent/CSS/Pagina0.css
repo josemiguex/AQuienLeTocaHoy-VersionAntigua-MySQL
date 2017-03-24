@@ -5,6 +5,8 @@ text-shadow: 0.1em 0.1em #333;
 }
 p,b {
 color: white;
+text-shadow: 0.1em 0.1em #333;
+
 }
 
 .button {
@@ -58,6 +60,8 @@ color: white;
 
 input {
 color: white;
+text-shadow: 0.1em 0.1em #333;
+
 }
 
 div.uno {
@@ -66,10 +70,15 @@ border-top: 500px;
 
 .input-field label {
      color: #FFF;
+     text-shadow: 0.1em 0.1em #333;
+     
+     
    }
    
    .input-field input[type=text]:focus + label {
      color: #FFF;
+     
+     
    }
    
       .input-field input[type=text]:focus {

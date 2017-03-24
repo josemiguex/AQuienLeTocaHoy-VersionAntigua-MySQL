@@ -23,6 +23,17 @@ background-repeat: no-repeat;/*que no se repita el fondo*/
 </head>
 <body>
 
+<%
+if (request.getParameter("CodAdmin").equals("")) {
+	out.println("<script> alert(\"Este administrador no existe\"); </script>");
+}
+%>
+<script>
+	if (${notExist == 'true'}) {
+		  alert("Este administrador no existe");
+	}
+	
+	</script>
 <h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 
 <div class="container">

@@ -58,6 +58,8 @@ color: white;
 
 input {
 color: white;
+text-shadow: 0.1em 0.1em #333;
+
 }
 
 div.uno {
@@ -66,10 +68,14 @@ border-top: 500px;
 
 .input-field label {
      color: #FFF;
+     text-shadow: 0.1em 0.1em #333;
+
    }
    
    .input-field input[type=text]:focus + label {
      color: #FFF;
+     text-shadow: 0.1em 0.1em #333;
+     
    }
    
       .input-field input[type=text]:focus {
@@ -79,9 +85,22 @@ border-top: 500px;
    
    .input-field input[type=password]:focus + label {
      color: #FFF;
+     text-shadow: 0.1em 0.1em #333;
+     
    }
    
       .input-field input[type=password]:focus {
+     border-bottom: 1px solid #FFF;
+     box-shadow: 0 1px 0 0 #FFF;
+   }
+   
+   .input-field input[type=email]:focus + label {
+     color: #FFF;
+     text-shadow: 0.1em 0.1em #333;
+     
+   }
+   
+      .input-field input[type=email]:focus {
      border-bottom: 1px solid #FFF;
      box-shadow: 0 1px 0 0 #FFF;
    }
