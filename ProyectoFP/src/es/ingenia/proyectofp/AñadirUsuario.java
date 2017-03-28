@@ -39,13 +39,29 @@ public class AñadirUsuario extends HttpServlet {
         Context ctx;
         Connection connection = null;
         Statement stmt = null;
+        Statement stmt2 = null;
 		try {
 			ctx = new InitialContext();
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
-		    String query = "INSERT INTO USUARIO (DNI, NOMBRE, APELLIDO1, APELLIDO2, EMAIL, IdAdministrador) VALUES ('" + request.getParameter("DNI") + "','" + request.getParameter("Nombre") + "','" + request.getParameter("Apellido1") + "','" + request.getParameter("Apellido2") + "','" + request.getParameter("email") + "','" + request.getParameter("IdAdministrador") + "')"; 
+	        
+	        String query = "SELECT DNI FROM USUARIO";     
 	        stmt = connection.createStatement();
-	        int insert = stmt.executeUpdate(query);
+	        ResultSet rs = stmt.executeQuery(query);
+	        
+	        
+
+	        while (rs.next()) {
+	        
+	        	if (request.getParameter("DNI").equals(rs.getString("DNI"))) {
+		        	request.setAttribute("DNIduplicado",true);
+	        	}
+	        }
+	        
+		    String query2 = "INSERT INTO USUARIO (DNI, NOMBRE, APELLIDO1, APELLIDO2, EMAIL, IdAdministrador) VALUES ('" + request.getParameter("DNI") + "','" + request.getParameter("Nombre") + "','" + request.getParameter("Apellido1") + "','" + request.getParameter("Apellido2") + "','" + request.getParameter("email") + "','" + request.getParameter("IdAdministrador") + "')"; 
+	        stmt2 = connection.createStatement();
+	        int insert = stmt2.executeUpdate(query2);
+	        
 	        
 	        
 	        	

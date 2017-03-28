@@ -84,6 +84,7 @@ public class LogInServlet extends HttpServlet {
 	        			String nextJSP = "/Pagina3.jsp?IdAdministrador=" + IdAdministrador + "&Identificador=" + identificador;
 	        			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 	        			dispatcher.forward(request,response);
+	        			
 	        		} else {
 	        			
 	        			

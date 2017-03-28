@@ -111,6 +111,15 @@
   <url-pattern>/EnviaEmail</url-pattern>
 </servlet-mapping>  
 
+<servlet>
+  <servlet-name>ModificarServlet</servlet-name>
+  <servlet-class>es.ingenia.proyectofp.ModificarServlet</servlet-class>
+</servlet>
+ <servlet-mapping>
+  <servlet-name>ModificarServlet</servlet-name>
+  <url-pattern>/ModificarServlet</url-pattern>
+</servlet-mapping>  
+
  <resource-ref>
       <description>ProyectoFP Connection</description>
       <res-ref-name>jdbc/ProyectoFP</res-ref-name>

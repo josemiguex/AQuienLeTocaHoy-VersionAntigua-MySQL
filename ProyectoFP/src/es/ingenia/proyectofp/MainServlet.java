@@ -9,6 +9,7 @@ import java.sql.Statement;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,6 +46,7 @@ public class MainServlet extends HttpServlet {
 	        DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/ProyectoFP");
 	        connection = ds.getConnection();
 	        
+	        
 	        String query = "SELECT IDADMINISTRADOR FROM ADMINISTRADOR WHERE IDENTIFICADOR LIKE '" + request.getParameter("Identificador") + "'";     
 	        stmt = connection.createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
@@ -67,7 +69,17 @@ public class MainServlet extends HttpServlet {
 	            String ID = rs2.getString("ID");
 	            String pasajero = rs2.getString("PASAJERO"); 
 	            String fecha = rs2.getString("date_format(Fecha, '%d/%m/%Y')");
+	            
+	            if (fecha == null) {
+	            	fecha = "-----------------------------";
+	            }
+	            
+	           
 	            String hora = rs2.getString("time_format(Hora, '%H:%i')");
+	            
+	            if (hora == null) {
+	            	hora = "";
+	            }
 	            
 	            String conductor = rs2.getString("CONDUCTOR");
 	            
@@ -78,9 +90,9 @@ public class MainServlet extends HttpServlet {
 	            
 	             conductor = Integer.toString(conductorNum);  
 	            
-	            response.getWriter().append("<tr><td><input type=\"checkbox\" name=\"dni\" id=\""+dni+ "\" value=\""+dni+ "\" /><label for=\""+dni+ "\"></td><td>"+dni+"</td><td cosplan=\"3\">"+nombre+" "+apellido1+" "+apellido2+"</label></td><td>" + pasajero + "</td><td>" + conductor + "</td><td cosplan=\"2\">" + fecha + " " + hora + "</td></tr>");
+	            response.getWriter().append("<tr><td><input type=\"checkbox\" name=\"dni\" id=\""+dni+ "\" value=\""+dni+ "\"><label for=\""+dni+ "\"></td><td> <a href=\"ModificarServlet?ID=" + rs2.getString("ID") +"&Identificador=" + request.getParameter("Identificador") + "&IdAdministrador=" + request.getParameter("IdAdministrador") +"\"> "+dni+"</a></td><td cosplan=\"3\"> <a href=\"ModificarServlet?ID=" + rs2.getString("ID") +"&Identificador=" + request.getParameter("Identificador") + "&IdAdministrador=" + request.getParameter("IdAdministrador") +"\"> "+nombre+" "+apellido1+" "+apellido2+"</a></label></td><td>" + pasajero + "</td><td>" + conductor + "</td><td cosplan=\"2\">" + fecha + " " + hora + "</td></tr>");
 	        }
-	       
+	        
 		} catch (NamingException e) {
 			response.getWriter().append(e.getMessage());
 			e.printStackTrace();
@@ -90,8 +102,11 @@ public class MainServlet extends HttpServlet {
 	    } finally {
 	        if (stmt != null) {	        	
 	        	try {
-	        		connection.close();
+	        		
+	        		
 					stmt.close();
+					stmt2.close();
+					connection.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} 

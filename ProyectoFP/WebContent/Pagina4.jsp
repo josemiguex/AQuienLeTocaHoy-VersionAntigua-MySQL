@@ -21,44 +21,98 @@ background-position: bottom center;/*arriba a la derecha*/
 background-repeat: no-repeat;/*que no se repita el fondo*/
 }
 </style>
+
 	</head>
 	<body>
+	
+	<script>
+	if (${DNIduplicado == 'true'}) {
+		  alert("El DNI que has introducido ya está en uso");
+	}
+	</script>
+	
+	<script>
+	if (${emailDuplicado == 'true'}) {
+		  alert("El Email que has introducido ya está en uso");
+	}
+	</script>
+	
 		<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 		
+		<%
+		String servlet = "AñadirUsuario";
+		String nombre = "";
+		if (request.getParameter("nombre") != null) {
+			nombre = request.getParameter("nombre");
+			servlet = "ModificarServlet";
+		}
 		
-		<form class="col s12" action="AñadirUsuario" method="post">
+		String apellido1 = "";
+		if (request.getParameter("apellido1") != null) {
+			apellido1 = request.getParameter("apellido1");
+		}
+		
+		String apellido2 = "";
+		if (request.getParameter("apellido2") != null) {
+			apellido2 = request.getParameter("apellido2");
+		}
+		
+		String dni = "";
+		if (request.getParameter("dni") != null) {
+			dni = request.getParameter("dni");
+		}
+		
+		String email = "";
+		if (request.getParameter("email") != null) {
+			email = request.getParameter("email");
+		}
+		
+		String idUser = request.getParameter("ID");
+		%>
+		
+		<form class="col s12" action="<%= servlet %>" method="post">
 		<div class="row">
 		<div class="input-field col l4 m12 s12">
-		<input type="text" name="Nombre" placeholder="Nombre" required>
+		<input type="text" name="Nombre" placeholder="Nombre" value="<%= nombre %>" required>
 		<label for="Nombre"> Nombre </label>
 		</div>
 		<div class="input-field col l4 m6 s12">
-		<input type="text" name="Apellido1" placeholder="Primer apellido" required>
+		<input type="text" name="Apellido1" placeholder="Primer apellido" value="<%= apellido1 %>" required>
 		<label for="Apellido1">Primer apellido</label>
 		</div>
 		<div class="input-field col l4 m6 s12">
-		<input type="text" name="Apellido2" placeholder="Segundo apellido">
+		<input type="text" name="Apellido2" placeholder="Segundo apellido" value="<%= apellido2 %>">
 		<label for="Apellido2">Segundo apellido</label>
 		</div>
 		<div class="input-field col l6 m6 s12">
-		<input type="text" name="DNI" placeholder="DNI" required>
+		<input type="text" name="DNI" id="DNI" placeholder="DNI" value="<%= dni %>" required>
 		<label for="DNI">DNI</label>
 		</div>
 		<div class="input-field col l6 m6 s12">
-		<input type="email" name="email" placeholder="Correo electrónico" required>
+		<input type="email" name="email" placeholder="Correo electrónico" value="<%= email %>" required>
 		<label for="email" data-error="wrong" data-success="right">Correo electrónico</label>
 		<%String id = request.getParameter("IdAdministrador");
 		  String identificador = request.getParameter("Identificador");	
 		%>
-				
+			
 		<input type="hidden" name="IdAdministrador" value=<%=id %>>
 		<input type="hidden" name="Identificador" value=<%=identificador %>>
 		</div>
 		<br><br><br><br>
 		<center>
 		
-		<input class="button" type="submit" value="Añadir Usuario">
+		<%
+		if (request.getParameter("nombre") == null) {
+			out.println("<input class=\"button\" type=\"submit\" value=\"Añadir Usuario\">");
+		} else {
+			out.println("<input type=\"hidden\" name=\"ID\" value=\"" + idUser + "\">");
+			out.println("<input type=\"hidden\" name=\"datos\" value=\"datos\">");
+			out.println("<input type=\"hidden\" name=\"dniActual\" value=\"" + dni + "\">");
+			out.println("<input type=\"hidden\" name=\"emailActual\" value=\"" + email + "\">");
+			out.println("<input class=\"button\" type=\"submit\" value=\"Modificar Usuario\">");
+		}
 		
+		%>
 		</center>
 		</div>
 		</form>

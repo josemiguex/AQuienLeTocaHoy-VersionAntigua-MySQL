@@ -82,6 +82,8 @@ public class AnotadorServlet extends HttpServlet {
 		        
 
 			}
+			
+			
 	        
 		} catch (NamingException e) {
 			response.getWriter().append(e.getMessage());

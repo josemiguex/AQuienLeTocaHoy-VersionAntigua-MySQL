@@ -19,6 +19,10 @@ background-attachment: fixed;/*para que sea estático*/
 background-position: top left;/*arriba a la derecha*/
 background-repeat: no-repeat;/*que no se repita el fondo*/
 }
+
+a {
+color: black;
+}
 </style>
 	</head>
 	<body background="IMG/Pagina3.jpg">
