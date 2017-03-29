@@ -119,7 +119,6 @@ public class EnviaEmail extends HttpServlet {
 	         Transport.send(message);
 	         
 	         
-	         
 		}
 		catch (MessagingException mex) {
 	         mex.printStackTrace();

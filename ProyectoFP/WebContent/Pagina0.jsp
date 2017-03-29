@@ -11,6 +11,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
 <title>¿A quién le toca hoy?</title>
 <link rel="stylesheet" type="text/css" href="CSS/Pagina0.css">
+
 <style>
 body {
 background-image: url(IMG/Pagina0.jpg);
@@ -20,18 +21,18 @@ background-repeat: no-repeat;/*que no se repita el fondo*/
 }
 </style>
 </head>
-<body>
+<body onload="mostrarError()">
 
 <script>
-	if (${IncorrectData == 'true'}) {
-		  alert("Usuario o contraseña incorrectos");
-	}
-	
-	if (${noErrorEmail == 'true'}) {
-		  alert("Se ha enviado un email con la nueva contraseña");
-	}
-	
-	</script>
+if (${IncorrectData == 'true'}) {
+	  alert("Usuario o contraseña incorrectos");
+}
+
+if (${noErrorEmail == 'true'}) {
+	  alert("Se ha enviado un email con la nueva contraseña");
+}
+</script>
+
 	
 	<h4 style="text-align: center;">¿A quién le toca hoy?</h4>
 	<h5 style="background-color: #8d6e63;" align="center">La función de este programa es mediante la anotación de cuántas veces ha ido como conductor o pasajero un determinado grupo de personas, mostrar la prioridad de quién debería ir como conductor o pasajero, por ejemplo si alguien ha ido muchas veces como pasajero y nunca como conductor se pondrá primero en la tabla </h5>
